@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="settings">Settings</string>
+    <string name="preferences">PREFERENCES</string>
+    <string name="open_health_goals">Open Health Goals</string>
+</resources>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Left Green Bar -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#5B4BC4" />
+            <size android:width="5dp" />
+        </shape>
+    </item>
+    <!-- Background Fill with offset -->
+    <item android:left="5dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#FFFFFF" />
+            <corners android:topRightRadius="16dp" android:bottomRightRadius="16dp" />
+        </shape>
+    </item>
+</layer-list>
