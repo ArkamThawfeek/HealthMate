@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F7F8FD"
+    android:fillViewport="true"
+    android:clipToPadding="false">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="30dp">
+
+        <!-- HEADER -->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginBottom="22dp">
+
+            <ImageView
+                android:id="@+id/btnBack"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:padding="9dp"
+                android:src="@drawable/ic_back"
+                android:contentDescription="Back"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:tint="#17234D"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Add Health Record"
+                android:textColor="#17234D"
+                android:textSize="19sp"
+                android:textStyle="bold"/>
+
+        </RelativeLayout>
+
+        <!-- DATE CARD -->
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="82dp"
+            android:layout_marginBottom="25dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="19dp"
+            app:cardElevation="3dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="18dp">
+
+                <ImageView
+                    android:layout_width="31dp"
+                    android:layout_height="31dp"
+                    android:src="@drawable/ic_calendar"
+                    android:contentDescription="Calendar"
+                    app:tint="#283E75"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginStart="17dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Date"
+                        android:textColor="#78839D"
+                        android:textSize="12sp"/>
+
+                    <EditText
+                        android:id="@+id/etDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:clickable="true"
+                        android:focusable="false"
+                        android:cursorVisible="false"
+                        android:padding="0dp"
+                        android:layout_marginTop="3dp"
+                        android:text="4 Nov 2026"
+                        android:textColor="#17234D"
+                        android:textSize="16sp"
+                        android:singleLine="true"/>
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:src="@drawable/ic_settings_arrow"
+                    android:contentDescription="Select date"
+                    app:tint="#8490AA"/>
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/dateClickArea"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- HEALTH DETAILS -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Health Details"
+            android:textColor="#17234D"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="14dp"/>
+
+        <!-- STEPS -->
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="94dp"
+            android:layout_marginBottom="13dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="19dp"
+            app:cardElevation="3dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <FrameLayout
+                    android:layout_width="92dp"
+                    android:layout_height="match_parent"
+                    android:background="#E9F8F6">
+
+                    <ImageView
+                        android:layout_width="39dp"
+                        android:layout_height="39dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_shoe"
+                        android:contentDescription="Steps"
+                        app:tint="#5748BD"/>
+
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:paddingStart="17dp"
+                    android:paddingEnd="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Steps Walked"
+                        android:textColor="#17234D"
+                        android:textSize="15sp"
+                        android:textStyle="bold"/>
+
+                    <EditText
+                        android:id="@+id/etSteps"
+                        android:layout_width="match_parent"
+                        android:layout_height="39dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Enter steps"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:padding="0dp"
+                        android:textColor="#17234D"
+                        android:textColorHint="#8994AC"
+                        android:textSize="15sp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- CALORIES -->
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="94dp"
+            android:layout_marginBottom="13dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="19dp"
+            app:cardElevation="3dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <FrameLayout
+                    android:layout_width="92dp"
+                    android:layout_height="match_parent"
+                    android:background="#FFF2E9">
+
+                    <ImageView
+                        android:layout_width="39dp"
+                        android:layout_height="39dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_fire"
+                        android:contentDescription="Calories"
+                        app:tint="#F26B3A"/>
+
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:paddingStart="17dp"
+                    android:paddingEnd="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Calories Burned"
+                        android:textColor="#17234D"
+                        android:textSize="15sp"
+                        android:textStyle="bold"/>
+
+                    <EditText
+                        android:id="@+id/etCalories"
+                        android:layout_width="match_parent"
+                        android:layout_height="39dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Enter calories (kcal)"
+                        android:inputType="numberDecimal"
+                        android:singleLine="true"
+                        android:padding="0dp"
+                        android:textColor="#17234D"
+                        android:textColorHint="#8994AC"
+                        android:textSize="15sp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- WATER -->
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="94dp"
+            android:layout_marginBottom="27dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="19dp"
+            app:cardElevation="3dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <FrameLayout
+                    android:layout_width="92dp"
+                    android:layout_height="match_parent"
+                    android:background="#EAF5FF">
+
+                    <ImageView
+                        android:layout_width="39dp"
+                        android:layout_height="39dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_water"
+                        android:contentDescription="Water"
+                        app:tint="#249BEA"/>
+
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:paddingStart="17dp"
+                    android:paddingEnd="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Water Intake"
+                        android:textColor="#17234D"
+                        android:textSize="15sp"
+                        android:textStyle="bold"/>
+
+                    <EditText
+                        android:id="@+id/etWater"
+                        android:layout_width="match_parent"
+                        android:layout_height="39dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Enter amount (ml)"
+                        android:inputType="numberDecimal"
+                        android:singleLine="true"
+                        android:padding="0dp"
+                        android:textColor="#17234D"
+                        android:textColorHint="#8994AC"
+                        android:textSize="15sp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- SAVE -->
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSave"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:text="Save Record"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:backgroundTint="#5748BD"
+            app:cornerRadius="30dp"
+            app:elevation="3dp"
+            android:layout_marginBottom="11dp"/>
+
+        <!-- CANCEL -->
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCancel"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:text="Cancel"
+            android:textColor="#17234D"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:backgroundTint="#FFFFFF"
+            app:strokeColor="#8275CE"
+            app:strokeWidth="1dp"
+            app:cornerRadius="30dp"/>
+
+    </LinearLayout>
+
+</ScrollView>

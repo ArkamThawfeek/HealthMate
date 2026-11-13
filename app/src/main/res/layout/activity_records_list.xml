@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="#F4F3FC">
+
+
+    <!-- MAIN CONTENT -->
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:orientation="vertical"
+
+        android:padding="20dp"
+
+        android:paddingBottom="100dp">
+
+
+        <!-- TITLE -->
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Health Records"
+
+            android:textSize="26sp"
+
+            android:textStyle="bold"
+
+            android:textColor="#191A3D"/>
+
+
+        <!-- SUBTITLE -->
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Your health journey, all in one place"
+
+            android:textSize="13sp"
+
+            android:textColor="#85869E"
+
+            android:layout_marginTop="5dp"
+
+            android:layout_marginBottom="22dp"/>
+
+
+        <!-- SEARCH -->
+
+        <androidx.cardview.widget.CardView
+
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+
+            app:cardCornerRadius="17dp"
+
+            app:cardElevation="2dp"
+
+            app:cardBackgroundColor="#FFFFFF">
+
+
+            <EditText
+
+                android:id="@+id/etSearch"
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:hint="Search records..."
+
+                android:paddingHorizontal="17dp"
+
+                android:background="@android:color/transparent"
+
+                android:drawableStart="@android:drawable/ic_menu_search"
+
+                android:drawablePadding="12dp"
+
+                android:textColor="#191A3D"
+
+                android:textColorHint="#A3A4B8"
+
+                android:singleLine="true"/>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <!-- SECTION TITLE -->
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="All Records"
+
+            android:textSize="18sp"
+
+            android:textStyle="bold"
+
+            android:textColor="#191A3D"
+
+            android:layout_marginTop="24dp"
+
+            android:layout_marginBottom="12dp"/>
+
+
+        <!-- RECORD LIST -->
+
+        <androidx.recyclerview.widget.RecyclerView
+
+            android:id="@+id/rvRecords"
+
+            android:layout_width="match_parent"
+
+            android:layout_height="0dp"
+
+            android:layout_weight="1"
+
+            android:clipToPadding="false"
+
+            android:paddingBottom="10dp"/>
+
+    </LinearLayout>
+
+
+    <!-- COMMON BOTTOM BAR -->
+
+    <include
+
+        android:id="@+id/bottomNavigation"
+
+        layout="@layout/layout_bottom_bar"
+
+        android:layout_width="match_parent"
+
+        android:layout_height="88dp"
+
+        android:layout_gravity="bottom"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
