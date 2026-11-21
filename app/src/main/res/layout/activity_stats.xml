@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F7F8FD">
+
+    <!-- MAIN CONTENT -->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:paddingBottom="105dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="18dp">
+
+            <!-- HEADER -->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Insights"
+                android:textColor="#17234D"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="5dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Track your health progress"
+                android:textColor="#8490AA"
+                android:textSize="13sp"
+                android:layout_marginBottom="20dp"/>
+
+            <!-- FILTER TABS -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:padding="4dp"
+                android:background="@drawable/rounded_input_bg"
+                android:layout_marginBottom="20dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnWeek"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:text="Week"
+                    android:textAllCaps="false"
+                    android:textColor="#FFFFFF"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:backgroundTint="#5748BD"
+                    app:cornerRadius="12dp"
+                    app:strokeWidth="0dp"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnMonth"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:text="Month"
+                    android:textAllCaps="false"
+                    android:textColor="#64748B"
+                    android:textSize="13sp"
+                    android:backgroundTint="@android:color/transparent"
+                    app:cornerRadius="12dp"
+                    app:strokeWidth="0dp"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnYear"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:text="Year"
+                    android:textAllCaps="false"
+                    android:textColor="#64748B"
+                    android:textSize="13sp"
+                    android:backgroundTint="@android:color/transparent"
+                    app:cornerRadius="12dp"
+                    app:strokeWidth="0dp"/>
+
+            </LinearLayout>
+
+            <!-- STEPS OVERVIEW -->
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="275dp"
+                android:layout_marginBottom="22dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="3dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Steps Overview"
+                        android:textColor="#17234D"
+                        android:textSize="18sp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/tvGraphSubtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Your activity trend"
+                        android:textColor="#8490AA"
+                        android:textSize="12sp"
+                        android:layout_marginTop="4dp"/>
+
+                    <com.example.healthmate.LineGraphView
+                        android:id="@+id/lineGraph"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:layout_marginTop="12dp"/>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- HEALTH SUMMARY -->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Health Summary"
+                android:textColor="#17234D"
+                android:textSize="19sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="14dp"/>
+
+            <!-- FIRST ROW -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="12dp">
+
+                <!-- AVG STEPS -->
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="112dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="7dp"
+                    app:cardCornerRadius="18dp"
+                    app:cardElevation="2dp"
+                    app:cardBackgroundColor="#FFFFFF">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:padding="14dp">
+
+                        <ImageView
+                            android:layout_width="27dp"
+                            android:layout_height="27dp"
+                            android:src="@drawable/ic_shoe"
+                            android:contentDescription="Steps"
+                            app:tint="#5748BD"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Avg Steps"
+                            android:textColor="#8490AA"
+                            android:textSize="12sp"
+                            android:layout_marginTop="8dp"/>
+
+                        <TextView
+                            android:id="@+id/tvAvgSteps"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textColor="#17234D"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:layout_marginTop="3dp"/>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <!-- AVG CALORIES -->
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="112dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="7dp"
+                    app:cardCornerRadius="18dp"
+                    app:cardElevation="2dp"
+                    app:cardBackgroundColor="#FFFFFF">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:padding="14dp">
+
+                        <ImageView
+                            android:layout_width="27dp"
+                            android:layout_height="27dp"
+                            android:src="@drawable/ic_fire"
+                            android:contentDescription="Calories"
+                            app:tint="#F27A43"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Avg Calories"
+                            android:textColor="#8490AA"
+                            android:textSize="12sp"
+                            android:layout_marginTop="8dp"/>
+
+                        <TextView
+                            android:id="@+id/tvAvgCalories"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0 kcal"
+                            android:textColor="#17234D"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:layout_marginTop="3dp"/>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+            <!-- SECOND ROW -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!-- AVG WATER -->
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="112dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="7dp"
+                    app:cardCornerRadius="18dp"
+                    app:cardElevation="2dp"
+                    app:cardBackgroundColor="#FFFFFF">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:padding="14dp">
+
+                        <ImageView
+                            android:layout_width="27dp"
+                            android:layout_height="27dp"
+                            android:src="@drawable/ic_water"
+                            android:contentDescription="Water"
+                            app:tint="#249BEA"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Avg Water"
+                            android:textColor="#8490AA"
+                            android:textSize="12sp"
+                            android:layout_marginTop="8dp"/>
+
+                        <TextView
+                            android:id="@+id/tvAvgWater"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0 ml"
+                            android:textColor="#17234D"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:layout_marginTop="3dp"/>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <!-- TOTAL RECORDS -->
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="112dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="7dp"
+                    app:cardCornerRadius="18dp"
+                    app:cardElevation="2dp"
+                    app:cardBackgroundColor="#FFFFFF">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:padding="14dp">
+
+                        <ImageView
+                            android:layout_width="27dp"
+                            android:layout_height="27dp"
+                            android:src="@drawable/ic_calendar"
+                            android:contentDescription="Records"
+                            app:tint="#5748BD"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Total Records"
+                            android:textColor="#8490AA"
+                            android:textSize="12sp"
+                            android:layout_marginTop="8dp"/>
+
+                        <TextView
+                            android:id="@+id/tvTotalRecords"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textColor="#17234D"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:layout_marginTop="3dp"/>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!-- BOTTOM NAVIGATION and CENTER ADD BUTTON -->
+
+    <include
+        layout="@layout/layout_bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="88dp"
+        android:layout_gravity="bottom"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

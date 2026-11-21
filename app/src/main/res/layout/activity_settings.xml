@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="#F4F3FC">
+
+
+    <!-- SETTINGS CONTENT -->
+
+    <ScrollView
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:clipToPadding="false"
+
+        android:paddingBottom="100dp">
+
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="vertical"
+
+            android:padding="22dp">
+
+
+            <!-- TITLE -->
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="Settings"
+
+                android:textSize="27sp"
+                android:textStyle="bold"
+
+                android:textColor="#191A3D" />
+
+
+            <!-- SUBTITLE -->
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="Manage your health preferences"
+
+                android:textSize="13sp"
+
+                android:textColor="#85869E"
+
+                android:layout_marginTop="5dp"
+
+                android:layout_marginBottom="25dp" />
+
+
+            <!-- HEALTH GOALS -->
+
+            <androidx.cardview.widget.CardView
+
+                android:id="@+id/layoutHealthGoals"
+
+                android:layout_width="match_parent"
+                android:layout_height="88dp"
+
+                android:layout_marginBottom="14dp"
+
+                android:clickable="true"
+                android:focusable="true"
+
+                android:foreground="?attr/selectableItemBackground"
+
+                app:cardCornerRadius="20dp"
+
+                app:cardElevation="2dp"
+
+                app:cardBackgroundColor="#FFFFFF">
+
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    android:orientation="horizontal"
+
+                    android:gravity="center_vertical"
+
+                    android:paddingStart="18dp"
+                    android:paddingEnd="18dp">
+
+
+                    <!-- ICON -->
+
+                    <FrameLayout
+
+                        android:layout_width="52dp"
+                        android:layout_height="52dp"
+
+                        android:background="@drawable/bg_goal_icon">
+
+                        <ImageView
+
+                            android:layout_width="52dp"
+                            android:layout_height="52dp"
+
+                            android:padding="13dp"
+
+                            android:src="@drawable/ic_health_goal"
+
+                            android:contentDescription="Health Goals"
+
+                            app:tint="#5146B8" />
+
+                    </FrameLayout>
+
+
+                    <!-- TEXT -->
+
+                    <LinearLayout
+
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+
+                        android:layout_weight="1"
+
+                        android:orientation="vertical"
+
+                        android:layout_marginStart="15dp">
+
+
+                        <TextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:text="Health Goals"
+
+                            android:textSize="16sp"
+
+                            android:textStyle="bold"
+
+                            android:textColor="#191A3D" />
+
+
+                        <TextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:text="Set your fitness goals"
+
+                            android:textSize="12sp"
+
+                            android:textColor="#85869E"
+
+                            android:layout_marginTop="4dp" />
+
+                    </LinearLayout>
+
+
+                    <!-- ARROW -->
+
+                    <ImageView
+
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+
+                        android:src="@drawable/ic_settings_arrow"
+
+                        android:contentDescription="Open Health Goals"
+
+                        app:tint="#A1A4B5" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <!-- UNITS & PREFERENCES -->
+
+            <androidx.cardview.widget.CardView
+
+                android:id="@+id/layoutUnits"
+
+                android:layout_width="match_parent"
+                android:layout_height="88dp"
+
+                android:layout_marginBottom="14dp"
+
+                android:clickable="true"
+                android:focusable="true"
+
+                android:foreground="?attr/selectableItemBackground"
+
+                app:cardCornerRadius="20dp"
+
+                app:cardElevation="2dp"
+
+                app:cardBackgroundColor="#FFFFFF">
+
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    android:orientation="horizontal"
+
+                    android:gravity="center_vertical"
+
+                    android:paddingStart="18dp"
+                    android:paddingEnd="18dp">
+
+
+                    <!-- ICON -->
+
+                    <FrameLayout
+
+                        android:layout_width="52dp"
+                        android:layout_height="52dp"
+
+                        android:background="@drawable/bg_units_icon">
+
+                        <ImageView
+
+                            android:layout_width="52dp"
+                            android:layout_height="52dp"
+
+                            android:padding="13dp"
+
+                            android:src="@drawable/ic_units"
+
+                            android:contentDescription="Units and Preferences"
+
+                            app:tint="#36A9E8" />
+
+                    </FrameLayout>
+
+
+                    <!-- TEXT -->
+
+                    <LinearLayout
+
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+
+                        android:layout_weight="1"
+
+                        android:orientation="vertical"
+
+                        android:layout_marginStart="15dp">
+
+
+                        <TextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:text="Units &amp; Preferences"
+
+                            android:textSize="16sp"
+
+                            android:textStyle="bold"
+
+                            android:textColor="#191A3D" />
+
+
+                        <TextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:text="Steps, Calories and water"
+
+                            android:textSize="12sp"
+
+                            android:textColor="#85869E"
+
+                            android:layout_marginTop="4dp" />
+
+                    </LinearLayout>
+
+
+                    <!-- ARROW -->
+
+                    <ImageView
+
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+
+                        android:src="@drawable/ic_settings_arrow"
+
+                        android:contentDescription="Open Units and Preferences"
+
+                        app:tint="#A1A4B5" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <!-- CLEAR ALL RECORDS -->
+
+            <androidx.cardview.widget.CardView
+
+                android:id="@+id/layoutClearRecords"
+
+                android:layout_width="match_parent"
+                android:layout_height="88dp"
+
+                android:clickable="true"
+                android:focusable="true"
+
+                android:foreground="?attr/selectableItemBackground"
+
+                app:cardCornerRadius="20dp"
+
+                app:cardElevation="2dp"
+
+                app:cardBackgroundColor="#FFFFFF">
+
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    android:orientation="horizontal"
+
+                    android:gravity="center_vertical"
+
+                    android:paddingStart="18dp"
+                    android:paddingEnd="18dp">
+
+
+                    <!-- ICON -->
+
+                    <FrameLayout
+
+                        android:layout_width="52dp"
+                        android:layout_height="52dp"
+
+                        android:background="@drawable/bg_delete_icon">
+
+                        <ImageView
+
+                            android:layout_width="52dp"
+                            android:layout_height="52dp"
+
+                            android:padding="13dp"
+
+                            android:src="@drawable/ic_clear_records"
+
+                            android:contentDescription="Clear All Records"
+
+                            app:tint="#DC2626" />
+
+                    </FrameLayout>
+
+
+                    <!-- TEXT -->
+
+                    <LinearLayout
+
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+
+                        android:layout_weight="1"
+
+                        android:orientation="vertical"
+
+                        android:layout_marginStart="15dp">
+
+
+                        <TextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:text="Clear All Records"
+
+                            android:textSize="16sp"
+
+                            android:textStyle="bold"
+
+                            android:textColor="#DC2626" />
+
+
+                        <TextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:text="Remove all your records"
+
+                            android:textSize="12sp"
+
+                            android:textColor="#85869E"
+
+                            android:layout_marginTop="4dp" />
+
+                    </LinearLayout>
+
+
+                    <!-- ARROW -->
+
+                    <ImageView
+
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+
+                        android:src="@drawable/ic_settings_arrow"
+
+                        android:contentDescription="Clear All Records"
+
+                        app:tint="#C4A0A5" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+    <!-- COMMON BOTTOM NAVIGATION -->
+
+    <include
+
+        android:id="@+id/bottomNavigation"
+
+        layout="@layout/layout_bottom_bar"
+
+        android:layout_width="match_parent"
+        android:layout_height="76dp"
+
+        android:layout_gravity="bottom" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
