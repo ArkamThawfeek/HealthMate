@@ -10,7 +10,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.healthmate.adapters.RecordsAdapter
-import com.example.healthmate.data.HealthDatabaseHelper
+import androidx.lifecycle.ViewModelProvider
+import com.example.healthmate.viewmodel.DashboardState
+import com.example.healthmate.viewmodel.HealthViewModel
 import com.example.healthmate.models.HealthRecord
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.progressindicator.CircularProgressIndicator
@@ -20,7 +22,7 @@ import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var dbHelper: HealthDatabaseHelper
+    private lateinit var viewModel: HealthViewModel
 
     private lateinit var tvDate: TextView
     private lateinit var tvStepsCount: TextView
@@ -36,14 +38,13 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var rvRecentRecords: RecyclerView
 
-    private val dailyStepGoal = 10000
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         BottomNavigationHelper.setActive(findViewById(android.R.id.content), BottomNavigationHelper.Tab.HOME)
 
-        dbHelper = HealthDatabaseHelper(this)
+        viewModel = ViewModelProvider(this)[HealthViewModel::class.java]
+        viewModel.dashboard.observe(this) { state -> showDashboard(state) }
 
         // Initialize Dashboard Views
         tvDate = findViewById(R.id.tvDate)
@@ -103,13 +104,13 @@ class MainActivity : AppCompatActivity() {
         // REFRESH DASHBOARD
 
         btnRefresh.setOnClickListener {
-            loadDashboardData()
+            viewModel.loadDashboard()
         }
 
         // BOTTOM NAVIGATION
 
         findViewById<View>(R.id.navHomeLayout)?.setOnClickListener {
-            loadDashboardData()
+            viewModel.loadDashboard()
         }
 
         findViewById<View>(R.id.navRecordsLayout)?.setOnClickListener {
@@ -157,101 +158,52 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        loadDashboardData()
+        viewModel.loadDashboard()
     }
 
-    // DASHBOARD DATA
+    // DASHBOARD DATA (state comes from the ViewModel)
 
-    private fun loadDashboardData() {
+    private fun showDashboard(state: DashboardState) {
 
-        val records = dbHelper.getAllRecords()
+        val today = state.today
 
-        if (records.isNotEmpty()) {
+        // Today's totals (zeros when nothing is recorded for today)
+        tvStepsCount.text = (today?.steps ?: 0).toString()
+        tvCalories.text = "${today?.calories ?: 0} kcal"
+        tvWater.text = "${today?.waterMl ?: 0} ml"
 
-            val latest = records[0]
+        // Daily goal ring
+        tvGoalPercent.text = "${state.goalPercent}%"
+        progressGoal.setProgressCompat(state.goalPercent, today != null)
 
-            // Steps
-            tvStepsCount.text = latest.steps.toString()
-
-            // Calories
-            tvCalories.text = "${latest.calories} kcal"
-
-            // Water
-            tvWater.text = "${latest.waterMl} ml"
-
-            // Daily Goal Calculation
-            val percentage = (
-                    latest.steps.toFloat() / dailyStepGoal * 100
-                    ).toInt().coerceIn(0, 100)
-
-            // Update Circular Progress
-            tvGoalPercent.text = "$percentage%"
-
-            progressGoal.setProgressCompat(
-                percentage,
-                true
-            )
-
-            // Recent Records
-            val recentList = records.take(3)
-
-            val adapter = RecordsAdapter(
-                recentList,
-
-                // Edit Record
-                onEditClick = { record: HealthRecord ->
-
-                    val intent = Intent(
-                        this,
-                        RecordFormActivity::class.java
-                    )
-
-                    intent.putExtra("RECORD_ID", record.id)
-                    intent.putExtra("RECORD_DATE", record.date)
-                    intent.putExtra("RECORD_STEPS", record.steps)
-                    intent.putExtra("RECORD_CALORIES", record.calories)
-                    intent.putExtra("RECORD_WATER", record.waterMl)
-
-                    startActivity(intent)
-                },
-
-                // Delete Record
-                onDeleteClick = { record: HealthRecord ->
-
-                    AlertDialog.Builder(this)
-                        .setTitle("Delete Record")
-                        .setMessage(
-                            "Are you sure you want to delete this record?"
-                        )
-                        .setPositiveButton("Yes") { _, _ ->
-
-                            dbHelper.deleteRecord(record.id)
-
-                            loadDashboardData()
-                        }
-                        .setNegativeButton("No", null)
-                        .show()
-                }
-            )
-
-            rvRecentRecords.adapter = adapter
-
-        } else {
-
-            // Empty Dashboard
-            tvStepsCount.text = "0"
-            tvCalories.text = "0 kcal"
-            tvWater.text = "0 ml"
-
-            // Reset Daily Goal
-            tvGoalPercent.text = "0%"
-
-            progressGoal.setProgressCompat(
-                0,
-                false
-            )
-
+        // Recent records
+        if (!state.hasRecords) {
             rvRecentRecords.adapter = null
+            return
         }
+
+        rvRecentRecords.adapter = RecordsAdapter(
+            state.recent,
+
+            // Edit Record
+            onEditClick = { record: HealthRecord ->
+                startActivity(RecordFormActivity.editIntent(this, record))
+            },
+
+            // Delete Record
+            onDeleteClick = { record: HealthRecord ->
+
+                AlertDialog.Builder(this)
+                    .setTitle("Delete Record")
+                    .setMessage(
+                        "Are you sure you want to delete this record?"
+                    )
+                    .setPositiveButton("Yes") { _, _ ->
+                        viewModel.deleteRecord(record.id)
+                    }
+                    .setNegativeButton("No", null)
+                    .show()
+            }
+        )
     }
 }
